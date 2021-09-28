@@ -27,10 +27,8 @@ function Meeting(meetingDate, startTime, endTime) {
     this.meetingDate = meetingDate;
     this.startTime = startTime;
     this.endTime = endTime;
-
-    Meeting.prototype.isMeetingInTimeRange = function (start, end){
-        return !(start.isLater(endTime) || end.isEarlier(startTime));
-    }
+    this.isMeetingInTimeRange = (start, end) =>
+        !(start.isLater(endTime) || end.isEarlier(startTime));
 }
 
 module.exports.Meeting = Meeting;

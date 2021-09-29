@@ -11,7 +11,7 @@
 @param {Date} vacationEndDate - Время конца отпуска
  */
 
-function Vacation(vacationStartDate, vacationEndDate) {
+function Vacation(vacationStartDate, vacationEndDate) { //
     if(!vacationStartDate || !vacationEndDate || vacationStartDate >= vacationEndDate){
         throw new Error();
     }

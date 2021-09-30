@@ -17,6 +17,29 @@
 @param {number} minutes - Минуты
  */
 function Time(hours, minutes) {
+    const minTime = 0;
+    const maxMinutes = 60;
+    const maxHours = 24;
+    this.hours = verifyTime(hours, minTime, maxHours);
+    this.minutes = verifyTime(minutes, minTime, maxMinutes);
+
+    function verifyTime(time, min, max){
+        if (Number.isInteger(time) && time >= min && time < max){
+            return time;
+        }
+        throw new Error("Argument error.");
+    }
+
+    this.isEarlier = time => {
+        if (!(time instanceof Time)){
+            throw new Error("Argument error. Argument end must be an instance of Date.");
+        }
+
+        return time.hours === this.hours ? time.minutes > this.minutes : time.hours > this.hours;
+    }
+
+    this.isLater = time => !this.isEarlier(time);
+
 }
 
 module.exports.Time = Time;

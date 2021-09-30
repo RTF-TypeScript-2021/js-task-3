@@ -14,7 +14,12 @@ test('Создает объект класса Meeting', () => {
 
 test('Не создает объект класса Meeting', () => {
 	//@ts-ignore
-	expect(() => new Meeting(new Meeting(new Date(2021, 5, 3)), new Time(16, 10))).toThrow();
+	expect(() => new Meeting(
+		new Meeting(
+			new Date(2021, 5, 3)
+		),
+		new Time(16, 10)
+	)).toThrow();
 	//@ts-ignore
 	expect(() => new Meeting(new Meeting(new Date(2021, 5, 3)))).toThrow();
 	//@ts-ignore
@@ -32,3 +37,6 @@ test('Метод isMeetingInTimeRange работает корректно', () =
 	expect(correctMeeting.isMeetingInTimeRange(new Time(15, 15), new Time(15, 20))).toBe(false);
 	expect(correctMeeting.isMeetingInTimeRange(new Time(15, 15), new Time(16, 20))).toBe(true);
 });
+//16 15 - 16 40
+
+//c 16 до 17

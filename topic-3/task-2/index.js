@@ -16,7 +16,25 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
-function Meeting(meetingDate, startTime, endTime) {
+//function Meeting(meetingDate, startTime, endTime) {
+//}
+
+class Meeting {
+    constructor(meetingDate, startTime, endTime) {
+        if (meetingDate === undefined || startTime === undefined || endTime === undefined){
+            throw new Error('Count of arguments is more or less than necessary')
+        }
+        this.meetingDate = meetingDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    isMeetingInTimeRange (start, end) {
+        return start.isEarlier(this.endTime) && start.isLater(this.startTime)
+			|| end.isEarlier(this.endTime) && end.isLater(this.startTime)
+            || start.isEarlier(this.startTime) && end.isLater(this.endTime);
+    }
 }
+
 
 module.exports.Meeting = Meeting;

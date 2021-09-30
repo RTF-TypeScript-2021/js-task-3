@@ -1,4 +1,5 @@
 "use strict";
+// @ts-ignore
 /** Задача 1 - Класс Time
 Требуется написать класс времени - Time, который содержит:
 	1.1. Поле с часами — hours (number)
@@ -16,7 +17,23 @@
 @param {number} hours - Час
 @param {number} minutes - Минуты
  */
-function Time(hours, minutes) {
+class Time {
+    constructor(hours, minutes) {
+        if (!Number.isInteger(hours) || hours > 24 || hours < 0
+         || !Number.isInteger(minutes) || minutes > 60 || minutes < 0){
+            throw new Error('Incorrect argument');
+        }
+        this.hours = hours;
+        this.minutes = minutes;
+    }
+
+    isEarlier(time) {
+        return this.hours * 60 + this.minutes <= time.hours * 60 + time.minutes;
+    }
+
+    isLater(time) {
+        return this.hours * 60 + this.minutes >= time.hours * 60 + time.minutes;
+    }
 }
 
 module.exports.Time = Time;

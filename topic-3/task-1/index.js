@@ -17,6 +17,38 @@
 @param {number} minutes - Минуты
  */
 function Time(hours, minutes) {
+    if (hours > 23 || minutes > 59 || hours < 0 || minutes < 0){
+        throw new Error();
+    }
+    this.hours = hours;
+    this.minutes = minutes;
+    this.isEarlier = function(obj){
+        if (!(obj instanceof Time)){
+            throw new Error();
+        }
+
+        if (obj.hours > this.hours) {
+            return true;
+        } else if (obj.hours === this.hours && obj.minutes > this.minutes){
+            return true;
+        }
+
+        return false;
+    }
+
+    this.isLater = function(obj){
+        if (!(obj instanceof Time)){
+            throw new Error();
+        }
+		
+        if (obj.hours < this.hours){
+            return true;
+        } else if (obj.hours === this.hours && obj.minutes < this.minutes){
+            return true;
+        }
+
+        return false;
+    }
 }
 
 module.exports.Time = Time;

@@ -12,6 +12,19 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
+	if (!(vacationStartDate instanceof Date) || !(vacationEndDate instanceof Date) || vacationStartDate.valueOf() >= vacationEndDate.valueOf()){
+		throw new Error();
+	}
+
+	this.vacationStartDate = vacationStartDate;
+	this.vacationEndDate = vacationEndDate;
+	this.isDateInVacation = function(date){
+		if (!(date instanceof Date)){
+			throw new Error();
+		}
+
+		return date.valueOf() >= this.vacationStartDate.valueOf() && date.valueOf() <= this.vacationEndDate.valueOf();
+	}
 
 }
 

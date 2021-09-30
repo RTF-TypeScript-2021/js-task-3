@@ -1,4 +1,4 @@
-const {Time} = require("../task-1");
+const { Time } = require("../task-1");
 
 /** Задача 2 - Класс Meeting
 Требуется написать класс встречи - Meeting, который содержит:
@@ -19,20 +19,20 @@ const {Time} = require("../task-1");
 @param {Time} endTime - Время конца встречи
  */
 function Meeting(meetingDate, startTime, endTime) {
-    if (!(meetingDate instanceof Date)){
+    if (!(meetingDate instanceof Date)) {
         throw new Error("Argument error. Argument meetingDate must be an instance of Date.");
     }
-    if (!(startTime instanceof Time)){
-        throw new Error("Argument error. Argument startTime must be an instance of Date.");
+    if (!(startTime instanceof Time)) {
+        throw new Error("Argument error. Argument startTime must be an instance of Time.");
     }
-    if (!(endTime instanceof Time)){
-        throw new Error("Argument error. Argument endTime must be an instance of Date.");
+    if (!(endTime instanceof Time)) {
+        throw new Error("Argument error. Argument endTime must be an instance of Time.");
     }
 
     const minStartTime = new Time(8, 0);
     const maxEndTime = new Time(19, 0);
 
-    if (startTime.isEarlier(minStartTime) || endTime.isLater(maxEndTime) || endTime.isEarlier(startTime)){
+    if (startTime.isEarlier(minStartTime) || endTime.isLater(maxEndTime) || endTime.isEarlier(startTime)) {
         throw new Error("Argument error. Incorrect meeting time.");
     }
 
@@ -41,11 +41,11 @@ function Meeting(meetingDate, startTime, endTime) {
     this.endTime = endTime;
 
     this.isMeetingInTimeRange = (start, end) => {
-        if (!(start instanceof Time)){
-            throw new Error("Argument error. Argument start must be an instance of Date.");
+        if (!(start instanceof Time)) {
+            throw new Error("Argument error. Argument start must be an instance of Time.");
         }
-        if (!(end instanceof Time)){
-            throw new Error("Argument error. Argument end must be an instance of Date.");
+        if (!(end instanceof Time)) {
+            throw new Error("Argument error. Argument end must be an instance of Time.");
         }
 
         return start.isEarlier(this.endTime) && end.isLater(this.startTime);

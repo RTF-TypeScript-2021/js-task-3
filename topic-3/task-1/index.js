@@ -23,16 +23,16 @@ function Time(hours, minutes) {
     this.hours = verifyTime(hours, minTime, maxHours);
     this.minutes = verifyTime(minutes, minTime, maxMinutes);
 
-    function verifyTime(time, min, max){
-        if (Number.isInteger(time) && time >= min && time < max){
+    function verifyTime(time, min, max) {
+        if (Number.isInteger(time) && time >= min && time < max) {
             return time;
         }
         throw new Error("Argument error.");
     }
 
     this.isEarlier = time => {
-        if (!(time instanceof Time)){
-            throw new Error("Argument error. Argument end must be an instance of Date.");
+        if (!(time instanceof Time)) {
+            throw new Error("Argument error. Argument time must be an instance of Time.");
         }
 
         return time.hours === this.hours ? time.minutes > this.minutes : time.hours > this.hours;

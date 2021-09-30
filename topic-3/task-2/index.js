@@ -17,6 +17,17 @@
 @param {Time} endTime - Время конца встречи
  */
 function Meeting(meetingDate, startTime, endTime) {
+    if (startTime.isLater(endTime) || startTime.hours < 8 || endTime.hours > 19) {
+        throw new Error();
+    }
+    this.meetingDate = meetingDate;
+    this.startTime = startTime;
+    this.endTime = endTime;
+}
+
+Meeting.prototype.isMeetingInTimeRange = function(startTime, endTime) {
+    return this.startTime.isLater(startTime) && this.startTime.isEarlier(endTime) ||
+		this.endTime.isLater(startTime) && this.endTime.isEarlier(endTime);
 }
 
 module.exports.Meeting = Meeting;

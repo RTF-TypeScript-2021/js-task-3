@@ -17,6 +17,33 @@
 @param {number} minutes - Минуты
  */
 function Time(hours, minutes) {
+    if(!Number.isInteger(minutes) || minutes < 0 || minutes >= 60) {
+        throw new Error();
+    }
+    if(!Number.isInteger(hours) || hours < 0 || hours >= 24) {
+        throw new Error();
+    }
+    this.hours = hours;
+    this.minutes = minutes;
 }
 
+Time.prototype.isEarlier = function(time) {
+    if(!(time instanceof Time)) {
+        throw new Error();
+    }
+
+    return time.getTimeInMinutes() > this.getTimeInMinutes();
+}
+
+Time.prototype.isLater = function(time) {
+    if(!(time instanceof Time)) {
+        throw new Error();
+    }
+    
+    return time.getTimeInMinutes() < this.getTimeInMinutes();
+}
+
+Time.prototype.getTimeInMinutes = function(){
+    return this.hours*60 + this.minutes;
+}
 module.exports.Time = Time;

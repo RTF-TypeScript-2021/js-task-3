@@ -18,10 +18,10 @@
  */
 function Time(hours, minutes) {
     if(!Number.isInteger(minutes) || minutes < 0 || minutes >= 60) {
-        throw new Error();
+        throw new Error("minutes must be integer numbers and (0 <= minutes < 60)");
     }
     if(!Number.isInteger(hours) || hours < 0 || hours >= 24) {
-        throw new Error();
+        throw new Error("hours must be integer numbers and (0 <= hours < 24)");
     }
     this.hours = hours;
     this.minutes = minutes;

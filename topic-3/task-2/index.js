@@ -21,19 +21,19 @@ import {Time} from "../task-1";
 
 function Meeting(meetingDate, startTime, endTime) {
     if (!(meetingDate instanceof Date)) {
-        throw new Error();
+        throw new Error("meetingDate must be instance of Date");
     }
     if (!(startTime instanceof Time)) {
-        throw new Error();
+        throw new Error("startTime must be instance of Time");
     }
     if (!(endTime instanceof Time)) {
-        throw new Error();
+        throw new Error("endTime must be instance of Time");
     }
     if(startTime.isLater(endTime)) {
-        throw new Error();
+        throw new Error("startTime is not earlier than endTime");
     }
     if(!startTime.isLater(new Time(8,0)) || !endTime.isEarlier(new Time(19,0))) {
-        throw new Error();
+        throw new Error("startTime and endTime must be in diapason 8:00 - 19:00");
     }
     this.meetingDate = meetingDate;
     this.startTime = startTime;

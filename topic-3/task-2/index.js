@@ -16,7 +16,40 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
+
+import {Time} from "../task-1";
+
 function Meeting(meetingDate, startTime, endTime) {
+    if (!(meetingDate instanceof Date)) {
+        throw new Error();
+    }
+    if (!(startTime instanceof Time)) {
+        throw new Error();
+    }
+    if (!(endTime instanceof Time)) {
+        throw new Error();
+    }
+    if(startTime.isLater(endTime)) {
+        throw new Error();
+    }
+    if(!startTime.isLater(new Time(8,0)) || !endTime.isEarlier(new Time(19,0))) {
+        throw new Error();
+    }
+    this.meetingDate = meetingDate;
+    this.startTime = startTime;
+    this.endTime = endTime;
 }
 
-module.exports.Meeting = Meeting;
+Meeting.prototype.isMeetingInTimeRange = function(startTime, endTime) {
+    if(!(startTime instanceof Time) || !(endTime instanceof Time)) {
+        throw new Error();
+    }
+    if(startTime.isLater(endTime)) {
+        throw new Error();
+    }
+    const inFreeRange = this.startTime.isLater(endTime) || this.endTime.isEarlier(startTime); 
+    
+    return !inFreeRange;
+}
+
+export { Meeting };

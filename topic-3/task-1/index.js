@@ -39,11 +39,12 @@ Time.prototype.isLater = function(time) {
     if(!(time instanceof Time)) {
         throw new Error();
     }
-    
+
     return time.getTimeInMinutes() < this.getTimeInMinutes();
 }
 
 Time.prototype.getTimeInMinutes = function(){
     return this.hours*60 + this.minutes;
 }
+
 module.exports.Time = Time;

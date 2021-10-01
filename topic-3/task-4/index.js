@@ -9,6 +9,11 @@
  */
 
 function Organaizer(meetings = [], vacations = []) { 
+    if (!meetings || !vacations || !Array.isArray(meetings) || !Array.isArray(vacations)){
+        throw new Error("Arguments incorrect");
+    }
+    this.meetings = meetings;
+    this.vacations = vacations; 
 };
 
 module.exports.Organaizer = Organaizer;

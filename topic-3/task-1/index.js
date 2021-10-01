@@ -17,6 +17,35 @@
 @param {number} minutes - Минуты
  */
 function Time(hours, minutes) {
+
+    this.hours = Hours();
+    this.minutes = Minutes();
+
+    function Hours() {
+        if(hours < 0 || hours >= 24) {
+            throw new Error("Incorrect data");
+        } else {
+            return hours;
+        }
+    }
+
+    function Minutes() {
+        if (minutes < 0 || minutes >= 60) {
+            throw new Error("Incorrect data");
+        } else {
+            return minutes;
+        }
+    }
+}
+
+const minInHour = 60;
+
+Time.prototype.isEarlier = function(Time) {
+    return (Time.minutes + Time.hours*minInHour) > (this.hours*minInHour + this.minutes);
+}
+
+Time.prototype.isLater = function(Time) {
+    return (Time.minutes + Time.hours*minInHour) < (this.hours*minInHour + this.minutes);
 }
 
 module.exports.Time = Time;

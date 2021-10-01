@@ -13,6 +13,16 @@
 
 function Vacation(vacationStartDate, vacationEndDate) {
 
+    this.vacationStartDate = vacationStartDate;
+    this.vacationEndDate = vacationEndDate;
+
+    if(vacationStartDate >= vacationEndDate || !vacationStartDate || !vacationEndDate) {
+        throw Error("icorrect vacation start date or vacation end date");
+    }
+}
+
+Vacation.prototype.isDateInVacation = function(date) {
+    return date >= this.vacationStartDate && date <= this.vacationEndDate; 
 }
 
 module.exports.Vacation = Vacation;

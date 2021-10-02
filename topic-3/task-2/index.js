@@ -16,7 +16,21 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
-function Meeting(meetingDate, startTime, endTime) {
-}
+const {Time} = require("../task-1");
 
+function Meeting(meetingDate, startTime, endTime) {
+    if (!Time.prototype.isPrototypeOf(startTime) || !Time.prototype.isPrototypeOf(endTime)
+		|| !Date.prototype.isPrototypeOf(meetingDate)){
+        throw new Error();
+    }
+    if(!(startTime.hours >= 8 || endTime.hours < 19) || (endTime.hours === 19 && endTime.minutes > 0)){
+        throw new Error();
+    }
+    this.meetingDate=meetingDate;
+    this.startTime=startTime;
+    this.endTime=endTime;
+}
+Meeting.prototype.isMeetingInTimeRange = function (startTime,endTime){
+    return !(endTime.isEarlier(this.startTime) || startTime.isLater(this.endTime));
+}
 module.exports.Meeting = Meeting;

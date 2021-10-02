@@ -1,3 +1,5 @@
+const {Time} = require("../task-1");
+
 /** Задача 3 - Класс Vacation
 Требуется написать класс отпуска - Vacation, который содержит:
 	3.1. Дата начала (объект класса Date)
@@ -12,7 +14,21 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
+    if (!Date.prototype.isPrototypeOf(vacationStartDate) || !Date.prototype.isPrototypeOf(vacationStartDate)){
+        throw new Error();
+    }
+    if (vacationEndDate.getTime() <= vacationStartDate.getTime()){
+        throw new Error();
+    }
+    this.vacationStartDate = vacationStartDate;
+    this.vacationEndDate = vacationEndDate;
+}
+Vacation.prototype.isDateInVacation = function (date){
+    if (!Date.prototype.isPrototypeOf(date)){
+        throw new Error();
+    }
 
+    return this.vacationEndDate.getTime() >= date.getTime() && this.vacationStartDate.getTime() <= date.getTime();
 }
 
 module.exports.Vacation = Vacation;

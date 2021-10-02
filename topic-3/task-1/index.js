@@ -16,7 +16,41 @@
 @param {number} hours - Час
 @param {number} minutes - Минуты
  */
-function Time(hours, minutes) {
+function Time(hours, minutes) {   
+    if (typeof(hours) !== 'number' || typeof(minutes) !=='number' || hours < 0  || hours > 24 
+    || minutes < 0 || minutes > 60) {
+        throw new Error("Значение времени некорректно");       
+    }
+    this.hours = hours;
+    this.minutes = minutes;
+
+    this.isEarlier = function(time) {
+        if (!time instanceof Time) {
+            throw new Error("Сравниваемый объект некорректный")
+        }
+        if (this.hours === time.hours) {
+            if (this.minutes < time.minutes) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (this.hours < time.hours) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    this.isLater = function(time) {
+        if (!time instanceof Time) {
+            throw new Error("Сравниваемый объект некорректный")
+        }
+        if (time.hours === this.hours && time.minutes === this.minutes) {
+            return false;
+        }
+        
+        return !this.isEarlier(time);
+    } 
 }
 
 module.exports.Time = Time;

@@ -17,6 +17,20 @@
 @param {number} minutes - Минуты
  */
 function Time(hours, minutes) {
+    this.hours = hours;
+    this.minutes = minutes;
+    
+    if (hours > 23 || hours < 0 || minutes > 59 || minutes < 0) {
+        throw new Error('Введено некорректное время');
+    }
+
+    this.isEarlier = (example) => {
+    	return (this.hours < example.hours) || (this.minutes < example.minutes);
+    }
+
+    this.isLater = (example) =>  {
+        return (this.hours > example.hours) || (this.minutes > example.minutes);
+    }
 }
 
 module.exports.Time = Time;

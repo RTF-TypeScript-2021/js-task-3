@@ -16,6 +16,8 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
+import { Time } from "../task-1";
+
 function Meeting(meetingDate, startTime, endTime) {
     if (startTime.hours < 8 || endTime.hours > 19) {
         throw Error('Время встречи неправильное');
@@ -36,4 +38,5 @@ function Meeting(meetingDate, startTime, endTime) {
     };
 }
 
-module.exports.Meeting = Meeting;
+const _Meeting = Meeting;
+export { _Meeting as Meeting };

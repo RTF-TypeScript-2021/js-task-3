@@ -16,7 +16,26 @@
 @param {number} hours - Час
 @param {number} minutes - Минуты
  */
+
 function Time(hours, minutes) {
+	if ((!Number.isInteger(hours)) ||(!Number.isInteger(minutes))){
+		throw Error("Hours or minuets are not integer")
+	}
+	
+	this.hours = hours;
+	this.minutes = minutes;
+
+	if ((hours >= 24) || (hours < 0) || ((minutes >= 60) || (minutes < 0))){
+		throw Error("Hours or minutes have wrong values")
+	}
+
+	this.isEarlier = function (time){
+		return ((this.hours < time.hours) || ((this.hours == time.hours) && (this.minutes < time.minutes)));
+	};
+	
+	this.isLater = function (time){
+		return ((this.hours > time.hours) || ((this.hours == time.hours) && (this.minutes > time.minutes)));
+	};
 }
 
 module.exports.Time = Time;

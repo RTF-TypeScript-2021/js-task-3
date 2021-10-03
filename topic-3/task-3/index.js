@@ -13,6 +13,20 @@
 
 function Vacation(vacationStartDate, vacationEndDate) {
 
+	if (!(Date.prototype.isPrototypeOf(vacationStartDate)) || !(Date.prototype.isPrototypeOf(vacationEndDate))){
+		throw Error("VacationStartDate or vacationEndDate is wrong type")
+	}
+	if (vacationStartDate >= vacationEndDate){
+		throw Error("Start of vacation is later than end of vacation");
+	}
+
+	this.vacationStartDate = vacationStartDate;
+	this.vacationEndDate = vacationEndDate;
+
+	this.isDateInVacation = function(date){
+		return ((this.vacationStartDate <= date) &&
+				(this.vacationEndDate >= date));
+	};
 }
 
 module.exports.Vacation = Vacation;

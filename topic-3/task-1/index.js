@@ -27,19 +27,20 @@ function Time(hours, minutes) {
         if (Number.isInteger(time) && time >= min && time < max) {
             return time;
         }
-        throw new Error("Argument error.");
+        throw new Error("Argument error. Incorrect time value.");
+    }
+}
+
+Time.prototype.isEarlier = function (time) {
+    if (!(time instanceof Time)) {
+        throw new Error("Argument error. Argument time must be an instance of Time.");
     }
 
-    this.isEarlier = time => {
-        if (!(time instanceof Time)) {
-            throw new Error("Argument error. Argument time must be an instance of Time.");
-        }
+    return time.hours === this.hours ? time.minutes > this.minutes : time.hours > this.hours;
+}
 
-        return time.hours === this.hours ? time.minutes > this.minutes : time.hours > this.hours;
-    }
-
-    this.isLater = time => !this.isEarlier(time);
-
+Time.prototype.isLater = function (time){
+    return !this.isEarlier(time);
 }
 
 module.exports.Time = Time;

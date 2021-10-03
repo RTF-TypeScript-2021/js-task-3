@@ -23,14 +23,14 @@ function Vacation(vacationStartDate, vacationEndDate) {
 
     this.vacationStartDate = vacationStartDate;
     this.vacationEndDate = vacationEndDate;
+}
 
-    this.isDateInVacation = (date) => {
-        if (!(date instanceof Date)){
-            throw new Error("Argument error. Argument date must be an instance of Date.");
-        }
-
-        return date >= this.vacationStartDate && date <= this.vacationEndDate;
+Vacation.prototype.isDateInVacation = function (date) {
+    if (!(date instanceof Date)){
+        throw new Error("Argument error. Argument date must be an instance of Date.");
     }
+
+    return date >= this.vacationStartDate && date <= this.vacationEndDate;
 }
 
 module.exports.Vacation = Vacation;

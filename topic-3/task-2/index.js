@@ -39,17 +39,17 @@ function Meeting(meetingDate, startTime, endTime) {
     this.meetingDate = meetingDate;
     this.startTime = startTime;
     this.endTime = endTime;
-
-    this.isMeetingInTimeRange = (start, end) => {
-        if (!(start instanceof Time)) {
-            throw new Error("Argument error. Argument start must be an instance of Time.");
-        }
-        if (!(end instanceof Time)) {
-            throw new Error("Argument error. Argument end must be an instance of Time.");
-        }
-
-        return start.isEarlier(this.endTime) && end.isLater(this.startTime);
-    };
 }
+
+Meeting.prototype.isMeetingInTimeRange = function (start, end){
+    if (!(start instanceof Time)) {
+        throw new Error("Argument error. Argument start must be an instance of Time.");
+    }
+    if (!(end instanceof Time)) {
+        throw new Error("Argument error. Argument end must be an instance of Time.");
+    }
+
+    return this.endTime.isLater(start) && end.isLater(this.startTime);
+};
 
 module.exports.Meeting = Meeting;

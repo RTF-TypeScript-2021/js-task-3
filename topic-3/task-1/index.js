@@ -22,7 +22,7 @@ function Time(hours, minutes) {
     this.minutes = Minutes();
 
     function Hours() {
-        if(hours < 0 || hours >= 24) {
+        if(hours < 0 || hours >= 24 && Number.isInteger(hours)) {
             throw new Error("Incorrect data");
         } else {
             return hours;
@@ -30,7 +30,7 @@ function Time(hours, minutes) {
     }
 
     function Minutes() {
-        if (minutes < 0 || minutes >= 60) {
+        if (minutes < 0 || minutes >= 60 && Number.isInteger(minutes)) {
             throw new Error("Incorrect data");
         } else {
             return minutes;

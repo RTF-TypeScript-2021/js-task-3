@@ -8,7 +8,11 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
-function Organaizer(meetings = [], vacations = []) { 
+function Organaizer(meetings = [], vacations = []) {
+    if(!Array.isArray(meetings) && !Array.isArray(meetings)) {
+        throw Error("Incorrect array data meetings and vacations")
+    }
+    
     this.meetings = meetings;
     this.vacations = vacations;
 };

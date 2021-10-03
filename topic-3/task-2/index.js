@@ -8,14 +8,18 @@ class Meeting {
 	 * @param {Time} startTime 
 	 * @param {Time} endTime 
 	 */
-    constructor(meetingDate, startTime, endTime) {
-		if(startTime.isLater(endTime) || startTime.hours < 8 || startTime.hours > 19) {
+	constructor(meetingDate, startTime, endTime) {
+		if(
+			startTime.isLater(endTime) || 
+			startTime.hours < 8 || 
+			startTime.hours > 19
+		) {
 			throw new Error("Invalid time");
 		}
-        this.meetingDate = meetingDate;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
+		this.meetingDate = meetingDate;
+		this.startTime = startTime;
+		this.endTime = endTime;
+	}
 
 	/**
 	 * @param {Time} startTime

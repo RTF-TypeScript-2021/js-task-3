@@ -6,7 +6,11 @@ class Vacation {
 	 * @param {Date} vacationEndDate 
 	 */
 	constructor(vacationStartDate, vacationEndDate) {
-		if(vacationStartDate.getDate() >= vacationEndDate.getDate()) {
+		if(
+			!(vacationEndDate instanceof Date) || 
+			!(vacationStartDate instanceof Date) || 
+			vacationStartDate >= vacationEndDate
+		) {
 			throw new Error("Invalid date");
 		}
 		this.vacationStartDate = vacationStartDate;
@@ -17,7 +21,11 @@ class Vacation {
 	 * @param {Date} date
 	 */
 	isDateInVacation(date) {
-		let time = date.getTime()
+		if(!(date instanceof Date)) {
+			throw new Error("Invalid argument");
+		}
+		const time = date.getTime()
+
 		return this.vacationStartDate.getTime() <= time && this.vacationEndDate.getTime() >= time;
 	}
 }

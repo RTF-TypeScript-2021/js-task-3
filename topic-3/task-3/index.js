@@ -1,3 +1,4 @@
+"use strict";
 /** Задача 3 - Класс Vacation
 Требуется написать класс отпуска - Vacation, который содержит:
 	3.1. Дата начала (объект класса Date)
@@ -23,7 +24,7 @@ function Vacation(vacationStartDate, vacationEndDate) {
     this.vacationStartDate = vacationStartDate;
     this.vacationEndDate = vacationEndDate;
 
-    Vacation.prototype.isDateInVacation = function(date) {
+    this.isDateInVacation = function(date) {
         return date <= this.vacationEndDate && date >= this.vacationStartDate;
     }
 }

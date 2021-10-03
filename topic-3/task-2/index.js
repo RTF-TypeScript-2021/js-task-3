@@ -21,7 +21,8 @@ function Meeting(meetingDate, startTime, endTime) {
         throw Error('Время встречи неправильное');
     }
 
-    if (!Date.prototype.isPrototypeOf(meetingDate) || !Time.prototype.isPrototypeOf(endTime) || !Time.prototype.isPrototypeOf(startTime)) {
+    if (!Date.prototype.isPrototypeOf(meetingDate) || !Time.prototype.isPrototypeOf(endTime)
+		|| !Time.prototype.isPrototypeOf(startTime)) {
         throw Error('Неправильный тип данных')
     };
 
@@ -29,7 +30,7 @@ function Meeting(meetingDate, startTime, endTime) {
     this.startTime = startTime;
     this.endTime = endTime;
 
-    Meeting.prototype.isMeetingInTimeRange = function(startTime, endTime) {
+    this.isMeetingInTimeRange = function(startTime, endTime) {
         return this.startTime.isLater(startTime) && this.startTime.isEarlier(endTime) ||
 			this.endTime.isLater(startTime) && this.endTime.isEarlier(endTime);
     };

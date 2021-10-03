@@ -28,11 +28,11 @@ function Time(hours, minutes) {
     this.hours = hours;
     this.minutes = minutes;
 
-    Time.prototype.isEarlier = function(time) {
+    this.isEarlier = function(time) {
         return this.hours * 60 + this.minutes <= time.hours * 60 + time.minutes;
     };
 
-    Time.prototype.isLater = function(time) {
+    this.isLater = function(time) {
         return this.hours * 60 + this.minutes >= time.hours * 60 + time.minutes;
     };
 }

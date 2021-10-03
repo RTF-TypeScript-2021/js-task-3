@@ -9,6 +9,11 @@
  */
 
 function Organaizer(meetings = [], vacations = []) { 
+    if (!(Array.isArray(meetings) && Array.isArray(vacations))) {
+        throw Error(`Не вижу массивов (PS: предлагать мне очки - не смешно)`);
+    }
+    this.meetings = meetings.slice();
+    this.vacations = vacations.slice();
 };
 
 module.exports.Organaizer = Organaizer;

@@ -12,7 +12,19 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
-
+    if (!(vacationStartDate instanceof Date && vacationEndDate instanceof Date)) {
+        throw Error(`То, что ты отправил как-то не похоже на дату`);
+    }
+    if (vacationStartDate.getTime() >= vacationEndDate.getTime()) {
+        throw Error(`Получается не отдохнем...`);
+    }
+    this.vacationStartDate = vacationStartDate;
+    this.vacationEndDate = vacationEndDate;
 }
+Vacation.prototype.isDateInVacation = function(date) {
+    return this.vacationStartDate.getTime() <= date.getTime() && 
+    date.getTime() <= this.vacationEndDate.getTime();
+}
+
 
 module.exports.Vacation = Vacation;

@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Meeting } from "..";
 import { Time } from "../../task-1";
 

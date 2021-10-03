@@ -17,6 +17,29 @@
 @param {number} minutes - Минуты
  */
 function Time(hours, minutes) {
+    if (hours < 0 || hours > 24 || typeof(hours) !== 'number' 
+	|| minutes < 0 || minutes > 60 || typeof(minutes) !== 'number'){
+        throw new Error('incorrect data');
+    }
+
+    this.hours = hours;
+    this.minutes = minutes;
+}
+
+Time.prototype.isEarlier = function(time) {
+    if (!(Time.prototype.isPrototypeOf(time))){
+        throw new Error();
+    }
+
+    return time.hours * 60 + time.minutes >= this.hours * 60 + this.minutes; // this 16:15 16:40 || 16:00 17:00
+}
+
+Time.prototype.isLater = function(time){
+    if (!(Time.prototype.isPrototypeOf(time))){
+        throw new Error();
+    }
+
+    return time.hours * 60 + time.minutes <= this.hours * 60 + this.minutes;
 }
 
 module.exports.Time = Time;

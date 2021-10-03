@@ -26,7 +26,7 @@ test('Не создает объект класса Meeting', () => {
 });
 
 test('Метод isMeetingInTimeRange работает корректно', () => {
-	expect(correctMeeting.isMeetingInTimeRange(new Time(16, 0), new Time(17, 0))).toBe(true);
+	expect(correctMeeting.isMeetingInTimeRange(new Time(16, 0), new Time(17, 0))).toBe(true); 
 	expect(correctMeeting.isMeetingInTimeRange(new Time(16, 15), new Time(17, 0))).toBe(true);
 	expect(correctMeeting.isMeetingInTimeRange(new Time(16, 15), new Time(16, 20))).toBe(true);
 	expect(correctMeeting.isMeetingInTimeRange(new Time(15, 15), new Time(15, 20))).toBe(false);

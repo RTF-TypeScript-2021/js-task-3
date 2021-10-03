@@ -1,3 +1,4 @@
+const { Time } = require("../task-1");
 /** Задача 2 - Класс Meeting
 Требуется написать класс встречи - Meeting, который содержит:
 	2.1. Поле c датой встречи (объект класса Date)
@@ -17,6 +18,27 @@
 @param {Time} endTime - Время конца встречи
  */
 function Meeting(meetingDate, startTime, endTime) {
+    if (!(Date.prototype.isPrototypeOf(meetingDate)) 
+		|| !(Time.prototype.isPrototypeOf(startTime)) 
+		|| !(Time.prototype.isPrototypeOf(endTime))
+		|| startTime < 8 || endTime > 19 || startTime.isLater(endTime)){
+        throw new Error();
+    }
+
+    this.meetingDate = meetingDate;
+    this.startTime = startTime;
+    this.endTime = endTime;
 }
 
-module.exports.Meeting = Meeting;
+Meeting.prototype.isMeetingInTimeRange = function(startTime, endTime){
+    if (!(Time.prototype.isPrototypeOf(startTime)) 
+		|| !(Time.prototype.isPrototypeOf(endTime))){
+        throw new Error();
+    }
+
+    return (this.startTime.isEarlier(startTime) && this.endTime.isLater(startTime)) 
+    || (this.startTime.isLater(startTime) && this.endTime.isEarlier(endTime)
+    || (this.startTime.isEarlier(endTime) && this.endTime.isLater(endTime)));
+}
+
+module.exports.Meeting = Meeting

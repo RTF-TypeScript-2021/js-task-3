@@ -9,6 +9,12 @@
  */
 
 function Organaizer(meetings = [], vacations = []) { 
+    if (!Array.isArray(meetings) && !Array.isArray(vacations)) {
+        throw new Error('Не массив данных');
+    }
+
+    this.meetings = meetings;
+    this.vacations = vacations;
 };
 
 module.exports.Organaizer = Organaizer;

@@ -12,7 +12,20 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
+    if (!Date.prototype.isPrototypeOf(vacationStartDate) || !Date.prototype.isPrototypeOf(vacationStartDate)) {
+        throw new Error('Неправильный тип данных');
+    }
 
+    if (vacationEndDate.getTime() <= vacationStartDate.getTime()) {
+        throw new Error('Время конца отпуска больше, чем начало');
+    }
+
+    this.vacationStartDate = vacationStartDate;
+    this.vacationEndDate = vacationEndDate;
+
+    Vacation.prototype.isDateInVacation = function(date) {
+        return date <= this.vacationEndDate && date >= this.vacationStartDate;
+    }
 }
 
 module.exports.Vacation = Vacation;

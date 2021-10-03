@@ -17,6 +17,23 @@
 @param {number} minutes - Минуты
  */
 function Time(hours, minutes) {
+    if (hours > 23 || hours < 0 || minutes < 0 || minutes > 59 || !Number.isInteger(hours) || !Number.isInteger(minutes)) {
+        throw new Error();
+    }
+    this.hours = hours;
+    this.minutes = minutes;
+}
+const minInHour = 60;
+const checkPar = function(param) {
+    return param.hours * minInHour + param.minutes;
+}
+
+Time.prototype.isEarlier = function(time) {
+    return checkPar(this) < checkPar(time);
+}
+
+Time.prototype.isLater = function(time) {
+    return checkPar(this) > checkPar(time);
 }
 
 module.exports.Time = Time;

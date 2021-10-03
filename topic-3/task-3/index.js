@@ -12,7 +12,23 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
+	if (!Date.prototype.isPrototypeOf(vacationStartDate) || !Date.prototype.isPrototypeOf(vacationEndDate)) {
+		throw new Error("The input data has incorrect format");
+	}
+	if (vacationEndDate.getTime() <= vacationStartDate.getTime()) {
+		throw new Error("The end date of the vacation must be later than the start date");
+	}
 
+	this.vacationStartDate = vacationStartDate;
+	this.vacationEndDate = vacationEndDate;
+}
+
+Vacation.prototype.isDateInVacation = function (date) {
+	if (!Date.prototype.isPrototypeOf(date)) {
+		throw new Error("The input data has incorrect format");
+	}
+
+	return this.vacationStartDate.getTime() <= date.getTime() && date.getTime() <= this.vacationEndDate.getTime();
 }
 
 module.exports.Vacation = Vacation;

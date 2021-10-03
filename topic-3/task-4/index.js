@@ -13,16 +13,6 @@ function Organaizer(meetings = [], vacations = []) {
     if (!meetings instanceof Array || !vacations instanceof Array) {
         throw new Error("Массивы некоректны");
     }
-    checkArraysForOrganaizer(meetings, vacations);
-    this.meetings = meetings;
-    this.vacations = vacations;
-};
-/**
- * Метод проверяющий корректность массивов переданных в Organaizer
- * @param {Array<Meeting>} meetings - Массив встреч
- * @param {Array<Vacation>} vacations - Массив отпусков
- */
-function checkArraysForOrganaizer(meetings, vacations) {
     meetings.forEach(element => {
         if (!element instanceof Meeting) {
             throw new Error("Массив meetings некорректный");
@@ -33,6 +23,8 @@ function checkArraysForOrganaizer(meetings, vacations) {
             throw new Error("Массив vacations некорректный");
         }
     });
-}
+    this.meetings = meetings;
+    this.vacations = vacations;
+};
 
 module.exports.Organaizer = Organaizer;

@@ -29,28 +29,27 @@ function Meeting(meetingDate, startTime, endTime) {
     }
     this.startTime = startTime;
     this.endTime = endTime;
-    /**
-    Метод, который должен возвращать true, если встреча, у которой был вызван метод,
-	пересекает переданный временной промежуток    
-    @param {Time} start - Время начала встречи
-    @param {Time} end - Время конца встречи
-    */
-    this.isMeetingInTimeRange = function(start, end) {
-        if (!start instanceof Time || !end instanceof Time) {
-            throw new Error("Временной промежуток не верный");
-        }
-        if ((this.startTime.isLater(start) && this.startTime.isEarlier(end))
-        || (this.endTime.isLater(start) && this.endTime.isEarlier(end))) {
-            return true;
-        } else if (this.startTime.isEarlier(start) && this.endTime.isLater(end)) {
-            return true;
-        } else if ((this.startTime.hours === start.hours && this.startTime.minutes === start.minutes) || (this.endTime.hours === end.hours && this.endTime.minutes === end.minutes)) {
-            return true;
-        }
-        
-        return false;
-    }
-    
 }
+/**
+Метод, который должен возвращать true, если встреча, у которой был вызван метод,
+пересекает переданный временной промежуток    
+@param {Time} start - Время начала встречи
+@param {Time} end - Время конца встречи
+*/
+Meeting.prototype.isMeetingInTimeRange = function(start, end) {
+    if (!start instanceof Time || !end instanceof Time) {
+        throw new Error("Временной промежуток не верный");
+    }
+    if ((this.startTime.isLater(start) && this.startTime.isEarlier(end))
+    || (this.endTime.isLater(start) && this.endTime.isEarlier(end))) {
+        return true;
+    } else if (this.startTime.isEarlier(start) && this.endTime.isLater(end)) {
+        return true;
+    } else if ((this.startTime.hours === start.hours && this.startTime.minutes === start.minutes) || (this.endTime.hours === end.hours && this.endTime.minutes === end.minutes)) {
+        return true;
+    }
+        
+    return false;
+}    
 
 module.exports.Meeting = Meeting;

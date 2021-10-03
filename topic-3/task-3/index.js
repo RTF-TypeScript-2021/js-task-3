@@ -18,23 +18,22 @@ function Vacation(vacationStartDate, vacationEndDate) {
     }
     this.vacationStartDate = vacationStartDate;
     this.vacationEndDate = vacationEndDate;
-    /**
-     * Метод принимающий один аргумент — дату.
-	 * Должен возвращать true, если переданная дата, входит в промежуток отпуска.
-     * @param {Date} date - Дата
-     */
-    this.isDateInVacation = function(date) {
-        if (!date instanceof Date) {
-            throw new Error("Дата некорректна");
-        }
-        const time = date.getTime();
-        if (time >= this.vacationStartDate.getTime() 
-        && time <= this.vacationEndDate.getTime()) {
-            return true;
-        }
-
-        return false;
+}
+/**
+* Метод принимающий один аргумент — дату.
+* Должен возвращать true, если переданная дата, входит в промежуток отпуска.
+* @param {Date} date - Дата
+*/Vacation.prototype.isDateInVacation = function(date) {
+    if (!date instanceof Date) {
+        throw new Error("Дата некорректна");
     }
+    const time = date.getTime();
+    if (time >= this.vacationStartDate.getTime() 
+    && time <= this.vacationEndDate.getTime()) {
+        return true;
+    }
+
+    return false;
 }
 
 module.exports.Vacation = Vacation;

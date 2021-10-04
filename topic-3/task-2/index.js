@@ -18,7 +18,7 @@
  */
 const { Time } = require("../task-1");
 
-function Meeting(meetingDate, startTime, endTime) {
+function Meeting (meetingDate, startTime, endTime) {
     if (!(meetingDate instanceof Date)) {
         throw new Error("Meeting Date variable must be an instance of Date");
     }
@@ -28,10 +28,13 @@ function Meeting(meetingDate, startTime, endTime) {
     if (!(endTime instanceof Time)) {
         throw new Error("End time variable must be an instance of Time");
     }
+    if (startTime.isLater(endTime)) {
+        throw new Error("Start time must be earlier than end time");
+    }
     if (startTime.hours < 8 || endTime > 19) {
         throw new Error("The meeting must happen between 8:00 and 19:00");
     }
-	
+    
     this.meetingDate = meetingDate;
     this.startTime = startTime;
     this.endTime = endTime;

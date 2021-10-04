@@ -8,8 +8,13 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
+const { Meeting } = require("../task-2");
+const { Vacation } = require("../task-3");
+
 function Organaizer(meetings = [], vacations = []) {
-    if(!Array.isArray(meetings) && !Array.isArray(meetings)) {
+    if(!Array.isArray(meetings) || !Array.isArray(meetings)
+     || meetings.some(x => !(x instanceof Meeting))
+     || meetings.some(x => !(x instanceof Vacation))) {
         throw Error("Incorrect array data meetings and vacations")
     }
     

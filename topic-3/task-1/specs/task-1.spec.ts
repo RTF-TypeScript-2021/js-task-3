@@ -12,6 +12,7 @@ test('Не создает объект класса Time', () => {
 	expect(() => new Time(20, 125)).toThrow();
 	expect(() => new Time(-3, 5)).toThrow();
 	expect(() => new Time(23, -5)).toThrow();
+	expect(() => new Time(0.5, 0.5)).toThrow();
 });
 
 test('Метод isEarlier работает корректно', () => {

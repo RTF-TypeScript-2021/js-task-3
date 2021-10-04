@@ -17,6 +17,21 @@
 @param {Time} endTime - Время конца встречи
  */
 function Meeting(meetingDate, startTime, endTime) {
+    if (!(startTime.hours > 8 && endTime.hours < 19)) {
+        throw new Error("Встреча может быть назначана только в промежутке между 08:00 до 19:00");
+    }
+
+    if (startTime.hours * 60 + startTime.minutes > endTime.hours * 60 + endTime.minutes) {
+        throw new Error("Время начала встречи должно быть меньше времени конца")
+    }
+
+    this.meetingDate = meetingDate;
+    this.startTime = startTime;
+    this.endTime = endTime;
+
+    this.isMeetingInTimeRange = function (startTime,endTime) {
+        return !(endTime.isEarlier(this.startTime) || startTime.isLater(this.endTime));
+    }
 }
 
 module.exports.Meeting = Meeting;

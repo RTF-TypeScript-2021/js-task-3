@@ -12,7 +12,23 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
+    if(!(vacationEndDate instanceof Date) || !(vacationStartDate instanceof Date)) {
+        throw new Error();
+    }
+    if(vacationEndDate <= vacationStartDate) {
+        throw new Error();
+    }
+    this.vacationEndDate = vacationEndDate;
+    this.vacationStartDate = vacationStartDate;
+}
 
+Vacation.prototype.isDateInVacation = function(date) {
+    if (!(date instanceof Date)) {
+        throw new Error("date must be instance of Date ");
+    }
+    const result = this.vacationStartDate <= date && date <= this.vacationEndDate; 
+
+    return result;
 }
 
 module.exports.Vacation = Vacation;

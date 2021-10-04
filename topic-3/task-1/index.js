@@ -23,9 +23,11 @@ function Time(hours, minutes){
     this.hours = hours;
     this.minutes = minutes;
 };
+
 Time.prototype.isEarlier = function(time){
     return time.hours * 60 + time.minutes > this.hours * 60 + this.minutes;
 };
+
 Time.prototype.isLater = function(time){
     return !this.isEarlier(time);
 };

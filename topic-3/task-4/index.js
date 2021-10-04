@@ -8,7 +8,14 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
-function Organaizer(meetings = [], vacations = []) { 
-};
+class Organaizer {
+    constructor(meetings = [], vacations = []) {
+        if (!(meetings instanceof Array) || !(vacations instanceof Array)) {
+            throw Error
+        }
+        this.meetings = meetings;
+        this.vacations = vacations;
+    }
+}
 
 module.exports.Organaizer = Organaizer;

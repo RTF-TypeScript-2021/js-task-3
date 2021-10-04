@@ -17,7 +17,7 @@
 @param {number} minutes - Минуты
  */
 function Time (hours, minutes) {
-    if (!Number.isInteger(hours) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+    if (!Number.isInteger(hours) || hours < 0 || hours > 23) {
         throw new Error("Hours variable must be an integer between 0 and 23");
     }
     if (!Number.isInteger(minutes) || minutes < 0 || minutes > 59) {

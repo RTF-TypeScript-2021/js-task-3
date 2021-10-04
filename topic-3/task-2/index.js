@@ -16,7 +16,7 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
-const { Time } = require("../task-1");
+const {Time} = require("../task-1");
 
 function Meeting (meetingDate, startTime, endTime) {
     if (!(meetingDate instanceof Date)) {

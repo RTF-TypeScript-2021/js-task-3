@@ -8,10 +8,23 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
+const { Meeting } = require("../task-2");
+const { Vacation } = require("../task-3");
+
 function Organaizer(meetings = [], vacations = []) { 
     if (!Array.isArray(meetings) || !Array.isArray(vacations)){
         throw new Error();
     }
+    meetings.forEach(element => {
+        if (!Meeting.prototype.isPrototypeOf(element)){
+            throw new Error();
+        }
+    });
+    vacations.forEach(element => {
+        if (!Vacation.prototype.isPrototypeOf(element)){
+            throw new Error();
+        }
+    });
 
     this.meetings = meetings;
     this.vacations = vacations;

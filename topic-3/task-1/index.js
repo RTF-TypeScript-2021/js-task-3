@@ -16,7 +16,38 @@
 @param {number} hours - Час
 @param {number} minutes - Минуты
  */
-function Time(hours, minutes) {
-}
+//Создание через Класс
+class Time {
 
+    static checkInstance(time){
+        if (!time instanceof Time){
+            throw Error(`${time} не является экземпляром класса Time`);
+        }
+    }
+
+    constructor(hours,minutes) {
+        const checkBounds = (type,limit)=> type >=0 && limit > type;
+
+        if (!(Number.isInteger(hours)
+            && Number.isInteger(minutes)
+            && checkBounds(hours,24)
+            && checkBounds(minutes,60))) {
+            throw new Error(`Некоректные данные: часы: ${hours} ; минуты: ${minutes}`)
+        }
+
+        this.hours = hours;
+        this.minutes = minutes;
+    }
+
+    isEarlier(time){
+        Time.checkInstance(time);
+
+        return new Date(0,0,1,this.hours,this.minutes) < new Date(0,0,1,time.hours,time.minutes);
+    }
+
+    isLater(time){
+
+        return !this.isEarlier(time);
+    }
+}
 module.exports.Time = Time;

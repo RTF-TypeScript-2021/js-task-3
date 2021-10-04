@@ -8,7 +8,34 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
-function Organaizer(meetings = [], vacations = []) { 
-};
+// Get/Set
+
+class Organaizer{
+    get vacations() {
+        return this._vacations;
+    }
+
+    set vacations(value) {
+        if(Array.isArray(value)) {
+            this._vacations = value;
+        }
+    }
+
+    get meetings(){
+        return this._meetings;
+    }
+
+    set meetings(value){
+        if(Array.isArray(value)){
+            this._meetings = value;
+        }
+    }
+
+    constructor(meetings=[],vacations=[]) {
+        this.meetings = meetings;
+        this.vacations=vacations;
+    }
+    
+}
 
 module.exports.Organaizer = Organaizer;

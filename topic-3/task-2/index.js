@@ -7,7 +7,7 @@
 		Начало временного промежутка — объект класса Time
 		Конец временного промежутка — объект класса Time
 		Должен возвращать true, если встреча, у которой был вызван метод,
-		пересекает переданный временной промежутук
+		пересекает переданный временной промежуток
 	2.5. Время начала встречи должно быть больше времени конца
 	2.6. Встреча может быть назначана только в промежутке между 08:00 до 19:00
 @constructor
@@ -16,7 +16,33 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
-function Meeting(meetingDate, startTime, endTime) {
-}
+//Создание через функцию
+const Task = require("../task-1/index.js")
 
+function Meeting(meetingDate, startTime, endTime) {
+
+    function checkArguments(start,end,meetingDate = null) {
+        if (Task.Time.checkInstance(start)
+            || Task.Time.checkInstance(end)
+            || (end.hours < start.hours || end.hours === start.hours && end.minutes < start.minutes)) {
+            throw new Error(`Неверные входные данные`)
+        }
+        if(meetingDate!==null){
+            if(!meetingDate instanceof Date){
+                throw new Error(`${meetingDate} не является экземпляром класса Date`)
+            }
+        }
+    }
+
+    checkArguments(startTime,endTime,meetingDate);
+    this.meetingDate = meetingDate;
+    this.startTime = startTime;
+    this.endTime = endTime;
+
+    this.isMeetingInTimeRange = function (start, end) {
+        checkArguments(start,end);
+
+        return startTime.isEarlier(end) && endTime.isLater(start);
+    }
+}
 module.exports.Meeting = Meeting;

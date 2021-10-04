@@ -17,6 +17,17 @@
 @param {Time} endTime - Время конца встречи
  */
 function Meeting(meetingDate, startTime, endTime) {
+	if (meetingDate === undefined || startTime === undefined || endTime === undefined) {
+		throw new Error('Invalid number of arguments');
+	}
+	this.meetingDate = meetingDate;
+    this.startTime = startTime;
+    this.endTime = endTime;
+}
+
+Meeting.prototype.isMeetingInTimeRange = function(startTime, endTime) {
+    return this.startTime.isEarlier(endTime) && this.startTime.isLater(startTime)||
+		this.endTime.isLater(startTime) && this.endTime.isEarlier(endTime);
 }
 
 module.exports.Meeting = Meeting;

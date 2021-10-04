@@ -12,7 +12,18 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
+	if (vacationStartDate === undefined || vacationEndDate === undefined) {
+		throw new Error("There is no some argument");
+	}
+	if (vacationEndDate <= vacationStartDate) {
+		throw new Error("EndDate can't be earlier than startDate");
+	}
+	this.vacationStartDate = vacationStartDate;
+	this.vacationEndDate = vacationEndDate;
+}
 
+Vacation.prototype.isDateInVacation = function (date) {
+    return date >= this.vacationStartDate && date <= this.vacationEndDate;
 }
 
 module.exports.Vacation = Vacation;

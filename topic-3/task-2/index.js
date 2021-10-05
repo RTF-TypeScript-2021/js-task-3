@@ -35,11 +35,11 @@ function Meeting(meetingDate, startTime, endTime) {
 	this.meetingDate = meetingDate;
 	this.startTime = startTime;
 	this.endTime = endTime;
-
-	this.isMeetingInTimeRange = function(start, end){
-        return (this.startTime.isEarlier(end) && this.endTime.isLater(start));
-	};
 }
+
+Meeting.prototype.isMeetingInTimeRange = function(start, end){
+	return (this.startTime.isEarlier(end) && this.endTime.isLater(start));
+};
 
 const _Meeting = Meeting;
 export { _Meeting as Meeting };

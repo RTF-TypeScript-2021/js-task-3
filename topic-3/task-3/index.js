@@ -22,11 +22,11 @@ function Vacation(vacationStartDate, vacationEndDate) {
 
 	this.vacationStartDate = vacationStartDate;
 	this.vacationEndDate = vacationEndDate;
-
-	this.isDateInVacation = function(date){
-		return ((this.vacationStartDate <= date) &&
-				(this.vacationEndDate >= date));
-	};
 }
+
+Vacation.prototype.isDateInVacation = function(date){
+	return ((this.vacationStartDate <= date) &&
+			(this.vacationEndDate >= date));
+};
 
 module.exports.Vacation = Vacation;

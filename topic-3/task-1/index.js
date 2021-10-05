@@ -28,14 +28,14 @@ function Time(hours, minutes) {
 	if ((hours >= 24) || (hours < 0) || ((minutes >= 60) || (minutes < 0))){
 		throw Error("Hours or minutes have wrong values")
 	}
-
-	this.isEarlier = function (time){
-		return ((this.hours < time.hours) || ((this.hours == time.hours) && (this.minutes < time.minutes)));
-	};
-	
-	this.isLater = function (time){
-		return ((this.hours > time.hours) || ((this.hours == time.hours) && (this.minutes > time.minutes)));
-	};
 }
+
+Time.prototype.isEarlier = function (time){
+	return ((this.hours < time.hours) || ((this.hours == time.hours) && (this.minutes < time.minutes)));
+};
+
+Time.prototype.isLater = function (time){
+	return ((this.hours > time.hours) || ((this.hours == time.hours) && (this.minutes > time.minutes)));
+};
 
 module.exports.Time = Time;

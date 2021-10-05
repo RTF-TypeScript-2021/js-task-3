@@ -12,7 +12,24 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
+    this.vacationStartDate = vacationStartDate;
+    this.vacationEndDate = vacationEndDate;
 
+    if(!vacationStartDate instanceof Date || !vacationEndDate instanceof Date) {
+        throw new Error("Arguments must be instance of Date object");
+    }
+
+    if(!vacationStartDate || !vacationEndDate) {
+        throw new Error("Arguments must contain start date and end date");
+    }
+
+    if(vacationStartDate >= vacationEndDate) {
+        throw new Error("Second argument must be greater than first argument");
+    }
+
+    this.isDateInVacation = (date) => {
+        return this.vacationStartDate <= date && date <= this.vacationEndDate;
+    }
 }
 
 module.exports.Vacation = Vacation;

@@ -25,7 +25,7 @@ function Time(hours, minutes) {
     }
 
     this.isEarlier = (example) => {
-    	return (this.hours < example.hours) || (this.minutes < example.minutes);
+    	return (this.hours < example.hours) || (this.hours === example.hours) && (this.minutes < example.minutes);
     }
 
     this.isLater = (example) =>  {

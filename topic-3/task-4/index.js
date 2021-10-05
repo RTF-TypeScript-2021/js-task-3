@@ -8,6 +8,9 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
+const { Meeting } = require("../task-2");
+const { Vacation } = require("../task-3");
+
 // Get/Set
 
 class Organaizer{
@@ -16,8 +19,10 @@ class Organaizer{
     }
 
     set vacations(value) {
-        if(Array.isArray(value)) {
+        if(Array.isArray(value) && (value.forEach(x=>x instanceof Vacation) || value.length===0)) {
             this._vacations = value;
+        }else{
+            throw new Error(`${value} не является экземпляром класса ${Vacation}`)   
         }
     }
 
@@ -26,8 +31,10 @@ class Organaizer{
     }
 
     set meetings(value){
-        if(Array.isArray(value)){
+        if(Array.isArray(value) && (value.forEach(x=>x instanceof Meeting) || value.length===0)) {
             this._meetings = value;
+        } else{
+            throw new Error(`${value} не является экземпляром класса ${Meeting}`)   
         }
     }
 

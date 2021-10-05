@@ -26,7 +26,7 @@ function Vacation(vacationStartDate, vacationEndDate) {
         }
     };
 
-    function checkDateVacation(date){
+    this.checkDateVacation = function (date){
         return vacationStartDate <= date && vacationEndDate >= date
     }
 
@@ -34,12 +34,13 @@ function Vacation(vacationStartDate, vacationEndDate) {
     this.vacationStartDate = vacationStartDate;
     this.vacationEndDate = vacationEndDate;
 
-    this.isDateInVacation = function (date){
-        if (date instanceof Date){
-            return checkDateVacation(date)
-        }
-        throw new Error(`${date} не является экземпляром класса Date`)
-    }
 }
 
+
+Vacation.prototype.isDateInVacation = function (date){
+    if (date instanceof Date){
+        return this.checkDateVacation(date)
+    }
+    throw new Error(`${date} не является экземпляром класса Date`)
+}
 module.exports.Vacation = Vacation;

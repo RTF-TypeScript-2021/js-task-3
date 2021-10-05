@@ -21,7 +21,7 @@ const Task = require("../task-1/index.js")
 
 function Meeting(meetingDate, startTime, endTime) {
 
-    function checkArguments(start,end,meetingDate = null) {
+    this.checkArgs = function (start,end,meetingDate = null) {
         if (Task.Time.checkInstance(start)
             || Task.Time.checkInstance(end)
             || (end.hours < start.hours || end.hours === start.hours && end.minutes < start.minutes)) {
@@ -34,15 +34,15 @@ function Meeting(meetingDate, startTime, endTime) {
         }
     }
 
-    checkArguments(startTime,endTime,meetingDate);
+    this.checkArgs(startTime,endTime,meetingDate);
     this.meetingDate = meetingDate;
     this.startTime = startTime;
     this.endTime = endTime;
 
-    this.isMeetingInTimeRange = function (start, end) {
-        checkArguments(start,end);
+}
+Meeting.prototype.isMeetingInTimeRange = function (start, end) {
+    this.checkArgs(start,end);
 
-        return startTime.isEarlier(end) && endTime.isLater(start);
-    }
+    return this.startTime.isEarlier(end) && this.endTime.isLater(start);
 }
 module.exports.Meeting = Meeting;

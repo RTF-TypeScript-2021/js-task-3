@@ -24,6 +24,7 @@ function Time(hours, minutes) {
     this.hours = hours;
     this.minutes = minutes;
 }
+
 Time.prototype.isEarlier = function(time) {
     if (!time instanceof Time) {
         throw new Error("Сравниваемый объект некорректный")
@@ -31,14 +32,14 @@ Time.prototype.isEarlier = function(time) {
     if (this.hours === time.hours) {
         if (this.minutes < time.minutes) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;   
     } else if (this.hours < time.hours) {
         return true;
-    } else {
-        return false;
     }
+
+    return false;
 }
 
 Time.prototype.isLater = function(time) {
@@ -51,6 +52,5 @@ Time.prototype.isLater = function(time) {
         
     return !this.isEarlier(time);
 } 
-
 
 module.exports.Time = Time;

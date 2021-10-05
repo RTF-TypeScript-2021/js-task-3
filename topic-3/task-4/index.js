@@ -25,6 +25,6 @@ function Organaizer(meetings = [], vacations = []) {
     });
     this.meetings = meetings;
     this.vacations = vacations;
-};
+}
 
 module.exports.Organaizer = Organaizer;

@@ -10,7 +10,6 @@
 @param {Date} vacationStartDate - Дата начала отпуска
 @param {Date} vacationEndDate - Время конца отпуска
  */
-
 function Vacation(vacationStartDate, vacationEndDate) {
     if (!vacationStartDate instanceof Date || !vacationEndDate instanceof Date
         || vacationStartDate.getTime() >= vacationEndDate.getTime()) {
@@ -23,7 +22,8 @@ function Vacation(vacationStartDate, vacationEndDate) {
 * Метод принимающий один аргумент — дату.
 * Должен возвращать true, если переданная дата, входит в промежуток отпуска.
 * @param {Date} date - Дата
-*/Vacation.prototype.isDateInVacation = function(date) {
+*/
+Vacation.prototype.isDateInVacation = function(date) {
     if (!date instanceof Date) {
         throw new Error("Дата некорректна");
     }

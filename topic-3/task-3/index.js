@@ -24,7 +24,7 @@ function Vacation(vacationStartDate, vacationEndDate) {
 
 Vacation.prototype.isDateInVacation = function(date) {
     if (!(date instanceof Date)) {
-        throw new Error("date must be instance of Date ");
+        throw new Error();
     }
     const result = this.vacationStartDate <= date && date <= this.vacationEndDate; 
 

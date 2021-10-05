@@ -16,7 +16,13 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
+import { Time } from "../task-1";
+
 function Meeting(meetingDate, startTime, endTime) {
+
+	if (!meetingDate instanceof Date || !endTime instanceof Time || !startTime instanceof Time) {
+		throw Error("Wrong type of data")
+	};
 	
 	if (!((startTime.hours >= 8) && (startTime.hours < 19)) || (!(endTime.hours > 8) && (endTime.hours <= 19))){
 		throw Error("Wrong time period");
@@ -31,9 +37,9 @@ function Meeting(meetingDate, startTime, endTime) {
 	this.endTime = endTime;
 
 	this.isMeetingInTimeRange = function(start, end){
-		return (((this.startTime.hours < end.hours) || ((this.startTime.hours == end.hours) && (this.startTime.minutes < end.minutes))) &&
-				((this.endTime.hours > start.hours) || ((this.endTime.hours == start.hours) && (this.endTime.minutes > start.minutes))));
+        return (this.startTime.isEarlier(end) && this.endTime.isLater(start));
 	};
 }
 
-module.exports.Meeting = Meeting;
+const _Meeting = Meeting;
+export { _Meeting as Meeting };

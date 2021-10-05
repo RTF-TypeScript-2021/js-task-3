@@ -19,7 +19,7 @@
 
 function Time(hours, minutes) {
 	if ((!Number.isInteger(hours)) ||(!Number.isInteger(minutes))){
-		throw Error("Hours or minuets are not integer")
+		throw Error("Hours or minutes are not integer")
 	}
 	
 	this.hours = hours;

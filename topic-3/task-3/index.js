@@ -13,7 +13,7 @@
 
 function Vacation(vacationStartDate, vacationEndDate) {
 
-	if (!(Date.prototype.isPrototypeOf(vacationStartDate)) || !(Date.prototype.isPrototypeOf(vacationEndDate))){
+	if (!(vacationStartDate instanceof Date) || !(vacationEndDate instanceof Date)){
 		throw Error("VacationStartDate or vacationEndDate is wrong type")
 	}
 	if (vacationStartDate >= vacationEndDate){

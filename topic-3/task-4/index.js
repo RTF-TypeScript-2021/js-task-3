@@ -9,7 +9,7 @@
  */
 
 function Organaizer(meetings = [], vacations = []) { 
-    if (!Array.isArray(meetings) && !Array.isArray(vacations)) {
+    if (!Array.isArray(meetings) || !Array.isArray(vacations)) {
         throw new Error('Не массив данных');
     }
 

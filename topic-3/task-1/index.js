@@ -16,34 +16,21 @@
 @param {number} hours - Час
 @param {number} minutes - Минуты
  */
-function Time(hours, minutes)
-{
-	this.hours = normalHours();
-	this.minutes = normalMinutes();
+class Time {
+    constructor(hours, minutes) {
+        if (typeof (hours) !== "number" && typeof (minutes) !== "number" || hours < 0 || minutes < 0 || hours > 24 || minutes > 60) {
+            throw new Error()
+        }
+        this.hours = hours;
+        this.minutes = minutes;
+    }
 
-	function normalHours(){
-		if(hours > 23 || hours < 0) {
-			throw new Error();
-		}else return hours;
-	}
+    isEarlier(time) {
+        return (time.minutes + time.hours * 60) > (this.hours * 60 + this.minutes);
+    }
 
-	function normalMinutes(){
-		if(minutes > 59 || minutes < 0){
-			throw new Error();
-		}else return minutes;
-	}
-
-	this.isEarlier = Time =>{
-		if((Time.minutes + Time.hours*60) > (this.hours*60 + this.minutes)) {
-			return true;
-		}else return false;
-	}
-
-	this.isLater = Time =>{
-		if((Time.minutes + Time.hours*60) < (this.hours*60 + this.minutes)){
-			return true;
-		} else return false;
-	}
+    isLater(time) {
+        return (time.minutes + time.hours * 60) <= (this.hours * 60 + this.minutes);
+    }
 }
-
 module.exports.Time = Time;

@@ -13,7 +13,7 @@ function Organaizer(meetings = [], vacations = []) {
 		throw new Error('Not an array');
 	}
 	this.meetings = meetings;
-    this.vacations = vacations;
+	this.vacations = vacations;
 };
 
 module.exports.Organaizer = Organaizer;

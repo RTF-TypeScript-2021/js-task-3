@@ -24,7 +24,7 @@ function Time(hours, minutes) {
 		throw new Error('An impossible number of minutes');
 	}
 	this.hours = hours;
-    this.minutes = minutes;
+	this.minutes = minutes;
 }
 
 Time.prototype.isEarlier = function(time) {

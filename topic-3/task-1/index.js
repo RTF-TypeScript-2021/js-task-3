@@ -18,7 +18,7 @@
  */
 function Time(hours, minutes) {
 
-    if (typeof (hours) !== "number" && typeof (minutes) !== "number" || minutes % 1 !== 0 || hours % 1 !== 0 || hours < 0 || minutes < 0 || hours > 24 || minutes > 60) {
+    if (typeof (hours) !== "number" && typeof (minutes) !== "number" || !Number.isInteger(minutes) || !Number.isInteger(hours) || hours < 0 || minutes < 0 || hours > 24 || minutes > 60) {
         throw new Error()
     }
     this.hours = hours;

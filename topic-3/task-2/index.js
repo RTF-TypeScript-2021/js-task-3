@@ -21,8 +21,8 @@ function Meeting(meetingDate, startTime, endTime) {
 		throw new Error('Invalid number of arguments');
 	}
 	this.meetingDate = meetingDate;
-    this.startTime = startTime;
-    this.endTime = endTime;
+	this.startTime = startTime;
+	this.endTime = endTime;
 }
 
 Meeting.prototype.isMeetingInTimeRange = function(startTime, endTime) {

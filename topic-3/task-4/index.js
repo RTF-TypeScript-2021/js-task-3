@@ -8,7 +8,15 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
-function Organaizer(meetings = [], vacations = []) { 
-};
+function Organaizer(meetings = [], vacations = []) {
+    /* проверки агрументов */
+    if (!Array.isArray(meetings) || !Array.isArray(vacations)) {
+        throw new Error("Arguments must be arrays");
+    }
+    /* задание полей у класса */ 
+    this.meetings = meetings;
+    this.vacations = vacations;
+}
+
 
 module.exports.Organaizer = Organaizer;

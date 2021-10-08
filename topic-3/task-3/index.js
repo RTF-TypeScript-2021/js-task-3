@@ -12,7 +12,22 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
-
+    /* проверяем данные на адекватность */
+    if (vacationEndDate <= vacationStartDate || vacationStartDate === undefined || vacationEndDate === undefined) {
+        throw new Error ("Start date must be earlier than the end one");
+    }
+    /*задаем контекст для валидного диапазона дат */
+    this.vacationStartDate = vacationStartDate;
+    this.vacationEndDate = vacationEndDate;
 }
-
+/* сравниваем валидный диапазон с передаваемым в date */ 
+Vacation.prototype.isDateInVacation = function (date) {
+    if (this.vacationStartDate <= date && date <= this.vacationEndDate) {
+        return true;
+    } else {
+        return false;
+    }
+    /*  return this.vacationStartDate <= date <= this.vacationEndDate; - не работает. Не понимаю почему. По возможности объясни, пожалуйста :)*/
+    
+}
 module.exports.Vacation = Vacation;

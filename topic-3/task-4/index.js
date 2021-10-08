@@ -9,6 +9,9 @@
  */
 
 function Organaizer(meetings = [], vacations = []) {
+    if (!Array.isArray(meetings) || !Array.isArray(vacations)){
+        throw "Incorrect input data"
+    }
     this.meetings = meetings;
     this.vacations = vacations;
 }

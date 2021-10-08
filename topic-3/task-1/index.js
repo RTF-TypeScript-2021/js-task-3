@@ -19,7 +19,8 @@
 
 function Time(hours, minutes){
     if (hours >= 24 || hours < 0 ||
-		minutes >= 60 || minutes < 0){
+		minutes >= 60 || minutes < 0 ||
+		hours % 1 !== 0 || minutes% 1 !== 0){
         throw "incorrect value of hours or minutes";
     }
     this.hours = hours;

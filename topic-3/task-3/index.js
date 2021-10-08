@@ -12,7 +12,7 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
-    if (vacationEndDate === undefined || vacationStartDate === undefined || vacationStartDate >= vacationEndDate){
+    if (!vacationEndDate || !vacationStartDate || vacationStartDate >= vacationEndDate){
         throw "incorrect vacation start or end date";
     }
     this.vacationStartDate = vacationStartDate;

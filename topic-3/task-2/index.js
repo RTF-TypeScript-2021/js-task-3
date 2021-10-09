@@ -1,4 +1,4 @@
-
+import { Time } from "../task-1";
 /** Задача 2 - Класс Meeting
 Требуется написать класс встречи - Meeting, который содержит:
 	2.1. Поле c датой встречи (объект класса Date)
@@ -17,8 +17,10 @@
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
+startTimeNeed = 8;
+endTimeNeed = 19;
 function Meeting(meetingDate, startTime, endTime) {
-    if(!meetingDate || !startTime || !endTime || startTime < 8 || endTime > 19){
+    if(!meetingDate || (!startTime instanceof Time) || (!endTime instanceof Time) || startTimeNeed > startTime || endTimeNeed <= endTime){
         throw new Error();
     }
 

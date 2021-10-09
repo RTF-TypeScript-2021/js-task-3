@@ -9,8 +9,10 @@
  */
 
 function Organaizer(meetings = [], vacations = []) { 
-    this.meetings = meetings;
-    this.vacations = vacations
+    if(Array.isArray(meetings) && Array.isArray(vacations)){
+        this.meetings = meetings;
+        this.vacations = vacations;
+    }
 };
 
 module.exports.Organaizer = Organaizer;

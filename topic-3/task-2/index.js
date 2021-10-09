@@ -17,8 +17,10 @@
 @param {Time} endTime - Время конца встречи
  */
 function Meeting(meetingDate, startTime, endTime) {
-    if (startTime.hours < 8 || endTime.hours > 19 || startTime > endTime){
-        throw new UserException ("Invalid time");
+    const {Time} = require("../task-1");
+    if (startTime.hours < 8 || endTime.hours > 19 || startTime > endTime 
+		|| !(meetingDate instanceof Date) || !(startTime instanceof Time) || !(endTime instanceof Time)){
+        throw new UserException('Invalid time');
     };
     this.meetingDate = meetingDate;
     this.startTime = startTime;

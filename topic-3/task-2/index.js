@@ -17,20 +17,24 @@ import { Time } from "../task-1";
 @param {Time} startTime - Время начала встречи
 @param {Time} endTime - Время конца встречи
  */
-startTimeNeed = 8;
-endTimeNeed = 19;
-function Meeting(meetingDate, startTime, endTime) {
-    if(!meetingDate || (!startTime instanceof Time) || (!endTime instanceof Time) || startTimeNeed > startTime || endTimeNeed <= endTime){
-        throw new Error();
-    }
 
+
+let timeStartMeet = 8;
+let timeEndMeet = 19;
+
+function Meeting(meetingDate, startTime, endTime) {
+    if(!meetingDate || (!startTime instanceof Time) || (!endTime instanceof Time) || startTime.hours < timeStartMeet || endTime.hours > timeEndMeet){
+		throw new Error();
+    }
+	
     this.meetingDate = meetingDate ;
     this.startTime = startTime;
     this.endTime = endTime;
 }
 
-Meeting.prototype.isMeetingInTimeRange = function(start, end){
-    return start.isEarlier(this.endTime) && end.isLater(this.startTime);
+Meeting.prototype.isMeetingInTimeRange = function(startTime, endTime){
+    return startTime.isEarlier(this.endTime) && endTime.isLater(this.startTime);
 }
 
-module.exports.Meeting = Meeting;
+module.exports.Meeting = Meeting; 
+export {Meeting};

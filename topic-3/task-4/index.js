@@ -9,7 +9,8 @@
  */
 
 function Organaizer(meetings = [], vacations = []) { 
-    if (!meetings || !vacations || !Array.isArray(meetings) || !Array.isArray(vacations)){
+    if (!meetings || !vacations || !Array.isArray(meetings) || !Array.isArray(vacations)
+    || meetings.some(meeting => !(meeting instanceof Meeting)) || vacations.some(vacation => !(vacation instanceof Vacation))){
         throw new Error("Arguments incorrect");
     }
     this.meetings = meetings;

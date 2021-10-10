@@ -8,8 +8,12 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
-function Organaizer(meetings = [], vacations = []) { 
-    if(!Array.isArray(meetings) && !Array.isArray(vacations)) {
+const { Meeting } = require("../task-2");
+const { Vacation } = require("../task-3");
+
+function Organaizer(meetings = [], vacations = []){ 
+    if(!Array.isArray(meetings) || !Array.isArray(vacations) 
+    ||meetings.some(x => !(x instanceof Meeting)) || meetings.some(x => !(x instanceof Vacation))){
         throw new UserException("Invalid Array");
     };
     this.meetings = meetings;

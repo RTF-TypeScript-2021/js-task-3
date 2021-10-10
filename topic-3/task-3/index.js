@@ -12,7 +12,8 @@
  */
 
 function Vacation(vacationStartDate, vacationEndDate) {
-    if(!vacationStartDate || !vacationEndDate || vacationEndDate<=vacationStartDate){
+    if(!vacationStartDate || !vacationEndDate || vacationEndDate<=vacationStartDate
+        || !(vacationStartDate instanceof Date) || !(vacationEndDate instanceof Date)){
         throw new Error("incorrect date");
     }
     this.vacationStartDate = vacationStartDate;

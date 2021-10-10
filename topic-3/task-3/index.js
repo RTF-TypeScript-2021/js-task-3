@@ -20,10 +20,10 @@ function Vacation(vacationStartDate, vacationEndDate) {
     }
     this.vacationStartDate = vacationStartDate;
     this.vacationEndDate = vacationEndDate;
+}
 
-    this.isDateInVacation = function (date) {
-        return date >= this.vacationStartDate && date <= this.vacationEndDate;
-    }
+Vacation.prototype.isDateInVacation = function (date) {
+    return date >= this.vacationStartDate && date <= this.vacationEndDate;
 }
 
 module.exports.Vacation = Vacation;

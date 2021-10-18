@@ -8,8 +8,11 @@
 @param {Array<Vacation>} vacations - Массив отпусков
  */
 
+const { Meeting } = require("../task-2");
+const { Vacation } = require("../task-3");
+
 function Organaizer(meetings = [], vacations = []) { 
-    if(Array.isArray(meetings) && Array.isArray(vacations)){
+    if(Array.isArray(meetings) && Array.isArray(vacations) && vacations instanceof Vacation && meetings instanceof Meeting){
         this.meetings = meetings;
         this.vacations = vacations;
     }
